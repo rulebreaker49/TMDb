@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/no_internet"
+    android:layout_height="match_parent"
+    >
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_marginTop="100dip"
+        android:layout_height="wrap_content"
+        android:text="Retry"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:id="@+id/retry"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorAccent"
+        android:alpha="0.95"
+        />
+
+</RelativeLayout>

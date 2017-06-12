@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <dimen name="headSpace">80dip</dimen>
+    <dimen name="headingSize">50dip</dimen>
+    <dimen name="margins">15dip</dimen>
+    <dimen name="cardviewelevation">5dip</dimen>
+    <dimen name="cardviewcornerradius">5dip</dimen>
+    <dimen name="imageviewHeight">200dp</dimen>
+    <dimen name="movietitletextsize">15dip</dimen>
+    <dimen name="movietextviewtopspace">120dip</dimen>
+    <dimen name="textviewMovieTileTopMargin">150dip</dimen>
+    <dimen name="moviePosterMargin">60dip</dimen>
+    <dimen name="movieDetailMarginTop">120dip</dimen>
+    <dimen name="movieDetailMarginLeftRight">25dip</dimen>
+    <dimen name="movieDetailTitleSize">16dip</dimen>
+
+
+</resources>
