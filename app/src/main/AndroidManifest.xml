@@ -21,14 +21,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Dashboard"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".MovieDetails"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoBar" />
+        <activity
+            android:name=".MovieDetails"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoBar" />
+        <activity
+            android:name=".PlayTrailer"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoBar"></activity>
+        <activity android:name=".YoutubeFullscreen"
             android:theme="@style/AppThemeNoBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="landscape">
 
         </activity>
     </application>

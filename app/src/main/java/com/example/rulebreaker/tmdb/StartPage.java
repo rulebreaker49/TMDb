@@ -7,8 +7,11 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -16,6 +19,9 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import org.apache.commons.io.IOUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -33,6 +39,8 @@ public class StartPage extends Activity {
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
+
+    int page=0;
 
 
     @Override
@@ -85,7 +93,9 @@ public class StartPage extends Activity {
         }
     }
 
-    public class ProgressTask extends AsyncTask<Void, Void, String> {
+
+
+    public class ProgressTask extends AsyncTask<Void, Void, Void> {
 
 
         @Override
@@ -94,38 +104,29 @@ public class StartPage extends Activity {
         }
 
         @Override
-        protected String doInBackground(Void... params) {
+        protected Void doInBackground(Void... params) {
 
-            HttpURLConnection connection=null;
-
-            try {
-                URL url=new URL("https://api.themoviedb.org/3/movie/now_playing?api_key=55957fcf3ba81b137f8fc01ac5a31fb5&language=en-US&page=undefined");
-                connection=(HttpURLConnection)url.openConnection();
-                connection.connect();
-
-                InputStream stream=connection.getInputStream();
-
-                return IOUtils.toString(stream,"UTF-8");
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }finally {
-                if (connection != null)
-                    connection.disconnect();
-            }
             return null;
         }
 
         @Override
-        protected void onPostExecute(String data) {
-            progressBar.setVisibility(View.GONE);
-            Intent intent = new Intent(StartPage.this,Dashboard.class);
-            Bundle bundle = new Bundle();
-            bundle.putString("Data",data);
-            intent.putExtras(bundle);
-            startActivity(intent);
+        protected void onPostExecute(Void params) {
+            new CountDownTimer(3000, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+
+                }
+                @Override
+                public void onFinish() {
+                    if (haveNetworkConnection() == true) {
+                        Intent intent = new Intent(StartPage.this, Dashboard.class);
+                        progressBar.setVisibility(View.GONE);
+                        startActivity(intent);
+                    }
+                    else
+                        Toast.makeText(StartPage.this,"No Internet Connectivity",Toast.LENGTH_SHORT).show();
+                }}.start();
+
         }
     }
 }
